@@ -1,0 +1,45 @@
+image: node:20
+
+default:
+  before_script:
+    - npm ci
+    - npm config set progress false
+    - npm config set audit false
+
+stages:
+  - test
+  - build
+  - deploy
+
+lint:
+  stage: test
+  script:
+    - npm run lint
+  artifacts:
+    when: always
+    expire_in: 1 day
+    paths:
+      - .eslintcache
+
+build:
+  stage: build
+  script:
+    - npm run build
+  artifacts:
+    paths:
+      - .next
+      - node_modules
+    expire_in: 1 day
+
+deploy:
+  stage: deploy
+  only:
+    - main
+  rules:
+    - if: '$VERCEL_TOKEN'
+  script:
+    - npm install -g vercel
+    - vercel deploy --prod --token "$VERCEL_TOKEN" --confirm --name community-housing-portal
+  environment:
+    name: production
+    url: https://community-housing-portal.vercel.app

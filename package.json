@@ -1,0 +1,43 @@
+{
+  "name": "community-housing-portal",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "test": "npm run lint",
+    "prisma:generate": "prisma generate",
+    "prisma:migrate": "prisma migrate dev",
+    "prisma:seed": "tsx prisma/seed.ts"
+  },
+  "prisma": {
+    "seed": "tsx prisma/seed.ts"
+  },
+  "dependencies": {
+    "@prisma/client": "^6.19.3",
+    "bcryptjs": "latest",
+    "framer-motion": "^12.38.0",
+    "jsonwebtoken": "latest",
+    "next": "latest",
+    "react": "latest",
+    "react-dom": "latest",
+    "zod": "latest"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "latest",
+    "@types/jsonwebtoken": "latest",
+    "@types/node": "latest",
+    "@types/react": "latest",
+    "@types/react-dom": "latest",
+    "autoprefixer": "^10.5.0",
+    "eslint": "latest",
+    "eslint-config-next": "latest",
+    "postcss": "^8.5.14",
+    "prisma": "^6.19.3",
+    "tailwindcss": "^4.2.4",
+    "tsx": "latest",
+    "typescript": "latest"
+  }
+}
